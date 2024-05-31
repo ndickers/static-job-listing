@@ -37,6 +37,38 @@ article {
   padding: 1.2rem;
   margin-block-end: 2.3rem;
 }
+.filters {
+  margin-block-start: -2rem;
+  background: var(--grayish-cyan);
+  margin-inline: 1.5rem;
+  padding: 1.2rem;
+  border-radius: 0.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.filters div {
+  background: var(--opacity-cyan);
+  display: flex;
+  align-items: center;
+  border-radius: 0.3rem;
+}
+.hide-div{
+  display: none;
+}
+.filters p{
+  margin-inline: 0.5rem;
+}
+.x-button {
+  border-top-right-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+  background: var(--dark-cyan);
+  padding: 0.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
 /* inside article styling */
 .avatar {
   inline-size: 3rem;

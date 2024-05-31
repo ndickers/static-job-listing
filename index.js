@@ -2,21 +2,70 @@ document.addEventListener("DOMContentLoaded", async function () {
   const res = await fetch("./data.json");
   const jobs = await res.json();
   const main = document.querySelector("main");
-  jobs.forEach(async (job) => {
-    console.log(job.languages);
-    const article = await createHtmlComponent(job);
-    main.appendChild(article);
+  componentsArray(jobs, main);
+
+  main.addEventListener("click", function ({ target }) {
+    const filtersDiv = document.querySelector(".filters");
+
+    if (target.tagName === "BUTTON") {
+      if (filtersDiv.classList.contains("hide-div")) {
+        filtersDiv.classList.remove("hide-div");
+        filtersDiv.textContent = "";
+        filtersDiv.appendChild(filterBtn(target.textContent));
+        if (
+          target.textContent === "Frontend" ||
+          target.textContent === "Backend" ||
+          target.textContent === "Fullstack"
+        ) {
+          main.textContent = "";
+          componentsArray(filterJobs(jobs, target.textContent), main);
+        } else if (
+          target.textContent === "Midweight" ||
+          target.textContent === "Junior" ||
+          target.textContent === "Senior"
+        ) {
+          main.textContent = "";
+          componentsArray(filterJobs(jobs, "", target.textContent), main);
+        } else {
+          main.textContent = "";
+          componentsArray(filterJobs(jobs, "", "", target.textContent), main);
+        }
+      } else {
+  
+        filtersDiv.appendChild(filterBtn(target.textContent));
+      }
+    }
   });
+  const getFilters = document.querySelectorAll(".filter-item");
+
+  // console.log(filterJobs(jobs, "Frontend", ""));
 });
+
+function filterJobs(jobs, role = "", level = "", lang1 = "") {
+  let newArray = jobs.filter((job) => {
+    return (
+      (lang1 !== ""
+        ? job.languages.includes(lang1)
+        : job.role.includes(role)) && job.level.includes(level)
+    );
+  });
+  return newArray;
+}
+
+function componentsArray(listItems, domElement) {
+  listItems.forEach(async (element) => {
+    const article = await createHtmlComponent(element);
+    domElement.appendChild(article);
+  });
+}
 
 function createHtmlComponent(data) {
   const article = document.createElement("article");
 
   let buttons = "";
   data.languages.forEach((language) => {
-    buttons += `<button>${language}</button>`;
+    buttons += `<button class="select-click">${language}</button>`;
   });
-  console.log(buttons);
 
   const insideArticle = `<div class="article-header">
     <div class="image-div">
@@ -39,12 +88,25 @@ function createHtmlComponent(data) {
   <!-- line -->
   <div class="line-through"></div>
   <div class="filter-buttons">
-    <button>${data.role}</button>
-    <button>${data.level}</button>
+    <button class="select-click">${data.role}</button>
+    <button class="select-click">${data.level}</button>
     ${buttons}
   </div>`;
   //   document.querySelector(".filter-buttons").appendChild(buttons);
 
   article.innerHTML = insideArticle;
+
   return article;
+}
+
+function filterBtn(text) {
+  const createDiv = document.createElement("div");
+  createDiv.setAttribute("class", "filter-item");
+  createDiv.innerHTML = `<div class="filter-item">
+  <p>${text}</p>
+  <button class="x-button">
+    <img src="./images/icon-remove.svg" alt="" srcset="" />
+  </button>
+</div>`;
+  return createDiv;
 }
