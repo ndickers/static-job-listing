@@ -1,0 +1,117 @@
+:root {
+  --dark-cyan: hsl(180, 29%, 50%);
+  --light-grayish-cyan: hsl(180, 52%, 96%); /*(Background)*/
+  --grayish-cyan: hsl(180, 31%, 95%); /*(Filter Tablets)*/
+  --dark-drayish-cyan: hsl(180, 8%, 52%);
+  --opacity-cyan: hsla(180, 29%, 50%,0.1);
+  --very-dark-cyan: hsl(180, 14%, 20%);
+  font-size: 15px;
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "League Spartan", sans-serif;
+}
+
+header {
+  background: url(./images/bg-header-mobile.svg);
+  block-size: 9.5rem;
+  background-color: var(--dark-cyan);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+main {
+  background: var(--light-grayish-cyan);
+  block-size: 300rem;
+  padding-inline: 1.5rem;
+  padding-block: 2.5rem;
+}
+article {
+  background: var(--grayish-cyan);
+  border-radius: 0.5rem;
+  border-left: 0.35rem var(--dark-cyan) solid;
+  padding: 1.2rem;
+}
+/* inside article styling */
+.avatar {
+  inline-size: 3rem;
+  block-size: auto;
+}
+.article-header {
+  display: flex;
+  gap: 1.5rem;
+  align-items: end;
+}
+.image-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  gap: 1rem;
+  margin-block-start: -2.5rem;
+}
+.img-name {
+  font-weight: 700;
+  color: var(--dark-cyan);
+}
+.job-feature {
+  display: flex;
+  gap: 0.4rem;
+}
+.job-feature p {
+  font-size: small;
+  font-weight: 700;
+  background: var(--dark-cyan);
+  color: var(--grayish-cyan);
+  padding: 0.3rem;
+  padding-inline: 0.5rem;
+  border-radius: 1rem;
+  margin-block-end: -0.3rem;
+  text-transform: uppercase;
+}
+.job-feature p:nth-child(2) {
+  background: var(--very-dark-cyan);
+}
+
+.role {
+  margin-block-start: 1.5rem;
+}
+.role p {
+  font-weight: 700;
+  color: var(--very-dark-cyan);
+  margin-block-end: 1.3rem;
+}
+.role ul {
+  display: flex;
+  gap: 1.5rem;
+}
+.role li {
+  color: var(--dark-drayish-cyan);
+  font-weight: 500;
+}
+.role li:nth-child(1) {
+  list-style: none;
+}
+.role li::marker {
+  color: var(--dark-drayish-cyan);
+}
+
+.line-through {
+  block-size: 1px;
+  inline-size: 100%;
+  background: var(--dark-drayish-cyan);
+  border: none;
+  margin-block: 1.7rem;
+}
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.filter-buttons button {
+  background: var(--opacity-cyan);
+  color: var(--dark-cyan);
+  border: none;
+  font-weight: 700;
+  padding: 0.4rem;
+}
