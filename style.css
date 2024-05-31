@@ -3,7 +3,7 @@
   --light-grayish-cyan: hsl(180, 52%, 96%); /*(Background)*/
   --grayish-cyan: hsl(180, 31%, 95%); /*(Filter Tablets)*/
   --dark-drayish-cyan: hsl(180, 8%, 52%);
-  --opacity-cyan: hsla(180, 29%, 50%,0.1);
+  --opacity-cyan: hsla(180, 29%, 50%, 0.1);
   --very-dark-cyan: hsl(180, 14%, 20%);
   font-size: 15px;
 }
@@ -21,6 +21,9 @@ header {
   background-repeat: no-repeat;
   background-size: cover;
 }
+.dont-show {
+  display: none;
+}
 main {
   background: var(--light-grayish-cyan);
   block-size: 300rem;
@@ -32,6 +35,7 @@ article {
   border-radius: 0.5rem;
   border-left: 0.35rem var(--dark-cyan) solid;
   padding: 1.2rem;
+  margin-block-end: 2.3rem;
 }
 /* inside article styling */
 .avatar {
