@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", async function () {
         filtersDiv.classList.remove("hide-div");
         filtersDiv.textContent = "";
         filtersDiv.appendChild(filterBtn(target.textContent));
+        const deleteBtn = document.querySelector(".x-button");
+        deleteBtn.addEventListener("click", removeFilter);
+        console.log(document.querySelectorAll(".x-button"));
         if (
           target.textContent === "Frontend" ||
           target.textContent === "Backend" ||
@@ -31,14 +34,27 @@ document.addEventListener("DOMContentLoaded", async function () {
           componentsArray(filterJobs(jobs, "", "", target.textContent), main);
         }
       } else {
-  
         filtersDiv.appendChild(filterBtn(target.textContent));
+        const deleteBtn = document.querySelectorAll(".x-button");
+        deleteBtn.forEach((btn) => {
+          btn.addEventListener("click", removeFilter);
+        });
       }
     }
   });
   const getFilters = document.querySelectorAll(".filter-item");
 
   // console.log(filterJobs(jobs, "Frontend", ""));
+
+  function removeFilter(e) {
+    if (e.target.tagName === "BUTTON") {
+      e.target.parentElement.remove();
+      componentsArray(jobs, main);
+    } else if (e.target.tagName === "IMG") {
+      e.target.parentElement.parentElement.remove();
+      componentsArray(jobs, main);
+    }
+  }
 });
 
 function filterJobs(jobs, role = "", level = "", lang1 = "") {
