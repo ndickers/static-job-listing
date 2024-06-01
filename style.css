@@ -13,7 +13,7 @@
   margin: 0;
   font-family: "League Spartan", sans-serif;
 }
-body{
+body {
   background: var(--grayish-cyan);
 }
 .clear-div {
@@ -120,20 +120,22 @@ article {
   padding: 0.3rem;
   padding-inline: 0.5rem;
   border-radius: 1rem;
-  margin-block-end: -0.3rem;
+  margin-block-end: -1rem;
   text-transform: uppercase;
 }
 .job-feature p:nth-child(2) {
   background: var(--very-dark-cyan);
 }
-.container{
+.container {
   max-inline-size: 40rem;
   margin-inline: auto;
+}
+.avatar-desktop{
+  display:none;
 }
 
 .role {
   margin-block-start: 1.5rem;
-  
 }
 .role p {
   font-weight: 700;
@@ -162,6 +164,12 @@ article {
   border: none;
   margin-block: 1.7rem;
 }
+.feature-query{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap:2rem;
+}
 .filter-buttons {
   display: flex;
   flex-wrap: wrap;
@@ -174,8 +182,47 @@ article {
   font-weight: 700;
   padding: 0.4rem;
 }
-@media screen and (min-width: 700px) {
-  header{
+@media screen and (min-width: 900px) {
+  header {
     background-image: url(./images/bg-header-desktop.svg);
+    block-size: 13rem; 
+  }
+  .container{
+    max-inline-size: unset;
+    max-inline-size: 1000px;
+  }
+  .line-through {
+    display: none;
+  }
+  .filter-buttons button{
+    display: inline;
+    block-size: fit-content;
+  }
+  .query-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .avatar{
+    display: none;
+  }
+  .job-feature p{
+    margin-block-end: unset;
+  }
+  .feature-query{
+    display: flex;
+    align-items: center;
+  }
+  .avatar-desktop{
+    display: block;
+  }
+  .image-div{
+    margin-block-start: unset;
+    flex-direction: row;
+    align-items: center;
+  }
+  .article-header{
+    display: flex;
+    align-items: center;
   }
 }

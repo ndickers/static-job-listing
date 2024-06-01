@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const res = await fetch("./data.json");
     const jobs = await res.json();
     const main = document.querySelector("main");
-    main.textContent = ""
+    main.textContent = "";
     componentsArray(jobs, main);
   }
   const getFilters = document.querySelectorAll(".filter-item");
@@ -125,7 +125,11 @@ function createHtmlComponent(data) {
     buttons += `<button class="select-click">${language}</button>`;
   });
 
-  const insideArticle = `<div class="article-header">
+  const insideArticle = `<div class="query-display"><div>
+  <div class="article-header">
+  <img class="avatar-desktop" src=${data.logo} alt="" srcset="" />
+    <div>
+    <div class="feature-query">
     <div class="image-div">
       <img class="avatar" src=${data.logo} alt="" srcset="" />
       <p class="img-name" >${data.company}</p>
@@ -134,14 +138,19 @@ function createHtmlComponent(data) {
       ${data.new ? "<p>NEW!</p>" : "<p class='dont-show'></p>"}
       ${data.featured ? "<p>FEATURED</p>" : "<p class='dont-show'></p>"}
     </div>
-  </div>
-  <div class="role">
-    <p>${data.postedAt}</p>
+    </div>
+    <div class="role">
+  <p>${data.position}</p>
     <ul>
+    <li>${data.postedAt}</li>
       <li>${data.contract}</li>
       <li>${data.location}</li>
-      <li></li>
+  
     </ul>
+  </div>
+    </div>
+  </div>
+  
   </div>
   <!-- line -->
   <div class="line-through"></div>
@@ -149,7 +158,7 @@ function createHtmlComponent(data) {
     <button class="select-click">${data.role}</button>
     <button class="select-click">${data.level}</button>
     ${buttons}
-  </div>`;
+  </div></div>`;
   //   document.querySelector(".filter-buttons").appendChild(buttons);
 
   article.innerHTML = insideArticle;
