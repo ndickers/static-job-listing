@@ -140,7 +140,7 @@ function createHtmlComponent(data) {
     </div>
     </div>
     <div class="role">
-  <p>${data.position}</p>
+  <p class="postion-text">${data.position}</p>
     <ul>
     <li>${data.postedAt}</li>
       <li>${data.contract}</li>

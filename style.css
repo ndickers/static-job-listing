@@ -23,6 +23,13 @@ body {
 .clear-btn {
   border: none;
   background: inherit;
+  color: var(--very-dark-cyan);
+  cursor: pointer;
+  font-weight: 700;
+}
+.clear-btn:hover {
+  text-decoration: underline;
+  color: var(--dark-cyan);
 }
 .add-filters {
   display: flex;
@@ -76,6 +83,13 @@ article {
 .filters p {
   margin-inline: 0.5rem;
 }
+.postion-text {
+  color: var(--very-dark-cyan);
+  cursor: pointer;
+}
+.postion-text:hover {
+  color: var(--dark-cyan);
+}
 .x-button {
   border-top-right-radius: 0.3rem;
   border-bottom-right-radius: 0.3rem;
@@ -85,6 +99,10 @@ article {
   justify-content: center;
   align-items: center;
   border: none;
+  cursor: pointer;
+}
+.x-button:hover {
+  background: var(--very-dark-cyan);
 }
 /* inside article styling */
 .avatar {
@@ -130,8 +148,8 @@ article {
   max-inline-size: 40rem;
   margin-inline: auto;
 }
-.avatar-desktop{
-  display:none;
+.avatar-desktop {
+  display: none;
 }
 
 .role {
@@ -164,11 +182,11 @@ article {
   border: none;
   margin-block: 1.7rem;
 }
-.feature-query{
+.feature-query {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap:2rem;
+  gap: 2rem;
 }
 .filter-buttons {
   display: flex;
@@ -176,25 +194,31 @@ article {
   gap: 1rem;
 }
 .filter-buttons button {
+  cursor: pointer;
+  border-radius: 0.4rem;
   background: var(--opacity-cyan);
   color: var(--dark-cyan);
   border: none;
   font-weight: 700;
   padding: 0.4rem;
 }
+.filter-buttons button:hover {
+  color: var(--grayish-cyan);
+  background: var(--dark-cyan);
+}
 @media screen and (min-width: 900px) {
   header {
     background-image: url(./images/bg-header-desktop.svg);
-    block-size: 13rem; 
+    block-size: 13rem;
   }
-  .container{
+  .container {
     max-inline-size: unset;
     max-inline-size: 1000px;
   }
   .line-through {
     display: none;
   }
-  .filter-buttons button{
+  .filter-buttons button {
     display: inline;
     block-size: fit-content;
   }
@@ -203,25 +227,25 @@ article {
     justify-content: space-between;
     align-items: center;
   }
-  .avatar{
+  .avatar {
     display: none;
   }
-  .job-feature p{
+  .job-feature p {
     margin-block-end: unset;
   }
-  .feature-query{
+  .feature-query {
     display: flex;
     align-items: center;
   }
-  .avatar-desktop{
+  .avatar-desktop {
     display: block;
   }
-  .image-div{
+  .image-div {
     margin-block-start: unset;
     flex-direction: row;
     align-items: center;
   }
-  .article-header{
+  .article-header {
     display: flex;
     align-items: center;
   }
