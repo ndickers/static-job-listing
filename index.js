@@ -77,8 +77,13 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   }
 
-  function removeGroupFilter({ target }) {
+  async function removeGroupFilter({ target }) {
     target.parentElement.remove();
+    const res = await fetch("./data.json");
+    const jobs = await res.json();
+    const main = document.querySelector("main");
+    main.textContent = ""
+    componentsArray(jobs, main);
   }
   const getFilters = document.querySelectorAll(".filter-item");
 

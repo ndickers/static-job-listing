@@ -13,6 +13,9 @@
   margin: 0;
   font-family: "League Spartan", sans-serif;
 }
+body{
+  background: var(--grayish-cyan);
+}
 .clear-div {
   display: flex;
   inline-size: 100%;
@@ -123,9 +126,14 @@ article {
 .job-feature p:nth-child(2) {
   background: var(--very-dark-cyan);
 }
+.container{
+  max-inline-size: 40rem;
+  margin-inline: auto;
+}
 
 .role {
   margin-block-start: 1.5rem;
+  
 }
 .role p {
   font-weight: 700;
@@ -167,8 +175,7 @@ article {
   padding: 0.4rem;
 }
 @media screen and (min-width: 700px) {
-  body {
-    max-inline-size: 500px;
-    margin-inline: auto;
+  header{
+    background-image: url(./images/bg-header-desktop.svg);
   }
 }
