@@ -3,7 +3,11 @@ document.addEventListener("DOMContentLoaded", async function () {
   const jobs = await res.json();
   const main = document.querySelector("main");
   componentsArray(jobs, main);
-
+  const clearBtn = document.querySelector(".clear-btn");
+  clearBtn.addEventListener("click", (e) => {
+    e.target.previousElementSibling.remove();
+    console.log(e.target);
+  });
   main.addEventListener("click", function ({ target }) {
     const filtersDiv = document.querySelector(".filters");
 
@@ -34,6 +38,24 @@ document.addEventListener("DOMContentLoaded", async function () {
           componentsArray(filterJobs(jobs, "", "", target.textContent), main);
         }
       } else {
+        if (
+          target.textContent === "Frontend" ||
+          target.textContent === "Backend" ||
+          target.textContent === "Fullstack"
+        ) {
+          main.textContent = "";
+          componentsArray(filterJobs(jobs, target.textContent), main);
+        } else if (
+          target.textContent === "Midweight" ||
+          target.textContent === "Junior" ||
+          target.textContent === "Senior"
+        ) {
+          main.textContent = "";
+          componentsArray(filterJobs(jobs, "", target.textContent), main);
+        } else {
+          main.textContent = "";
+          componentsArray(filterJobs(jobs, "", "", target.textContent), main);
+        }
         filtersDiv.appendChild(filterBtn(target.textContent));
         const deleteBtn = document.querySelectorAll(".x-button");
         deleteBtn.forEach((btn) => {
