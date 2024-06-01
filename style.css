@@ -13,16 +13,18 @@
   margin: 0;
   font-family: "League Spartan", sans-serif;
 }
-.clear-div{
+.clear-div {
   display: flex;
   inline-size: 100%;
 }
-.clear-btn{
-  position: fixed;
-  background: inherit;
+.clear-btn {
   border: none;
-  left:55%;
-
+  background: inherit;
+}
+.add-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 header {
   background: url(./images/bg-header-mobile.svg);
@@ -55,21 +57,20 @@ article {
   padding: 1.2rem;
   border-radius: 0.5rem;
   display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  position: relative;
+  justify-content: space-between;
+  align-items: center;
   inline-size: 100%;
 }
-.filters div {
+.filter-item {
   background: var(--opacity-cyan);
   display: flex;
   align-items: center;
   border-radius: 0.3rem;
 }
-.hide-div{
+.hide-div {
   display: none;
 }
-.filters p{
+.filters p {
   margin-inline: 0.5rem;
 }
 .x-button {
@@ -103,6 +104,7 @@ article {
   font-weight: 700;
   color: var(--dark-cyan);
 }
+
 .job-feature {
   display: flex;
   gap: 0.4rem;
@@ -165,7 +167,7 @@ article {
   padding: 0.4rem;
 }
 @media screen and (min-width: 700px) {
-  body{
+  body {
     max-inline-size: 500px;
     margin-inline: auto;
   }

@@ -3,22 +3,29 @@ document.addEventListener("DOMContentLoaded", async function () {
   const jobs = await res.json();
   const main = document.querySelector("main");
   componentsArray(jobs, main);
-  const clearBtn = document.querySelector(".clear-btn");
-  clearBtn.addEventListener("click", (e) => {
-    e.target.previousElementSibling.remove();
-    console.log(e.target);
-  });
+  // const clearBtn = document.querySelector(".clear-btn");
+  // clearBtn.addEventListener("click", (e) => {
+  //   e.target.previousElementSibling.remove();
+  //   console.log(e.target);
+  // });
   main.addEventListener("click", function ({ target }) {
-    const filtersDiv = document.querySelector(".filters");
+    const filtersDiv = document.querySelector(".clear-div");
 
     if (target.tagName === "BUTTON") {
-      if (filtersDiv.classList.contains("hide-div")) {
-        filtersDiv.classList.remove("hide-div");
-        filtersDiv.textContent = "";
-        filtersDiv.appendChild(filterBtn(target.textContent));
-        const deleteBtn = document.querySelector(".x-button");
-        deleteBtn.addEventListener("click", removeFilter);
-        console.log(document.querySelectorAll(".x-button"));
+      if (filtersDiv.children.length === 0) {
+        const createDiv = document.createElement("div");
+        const createInnerDiv = document.createElement("div");
+        createDiv.setAttribute("class", "filters");
+        createInnerDiv.setAttribute("class", "add-filters");
+        const clearBtn = document.createElement("button");
+        clearBtn.setAttribute("class", "clear-btn");
+        createDiv.appendChild(createInnerDiv);
+        createDiv.appendChild(clearBtn);
+        createInnerDiv.appendChild(filterBtn(target.textContent));
+        createInnerDiv.addEventListener("click", deleteEachFilter);
+        clearBtn.textContent = "Clear";
+        clearBtn.addEventListener("click", removeGroupFilter);
+        filtersDiv.appendChild(createDiv);
         if (
           target.textContent === "Frontend" ||
           target.textContent === "Backend" ||
@@ -38,6 +45,8 @@ document.addEventListener("DOMContentLoaded", async function () {
           componentsArray(filterJobs(jobs, "", "", target.textContent), main);
         }
       } else {
+        const getDiv = document.querySelector(".add-filters");
+        getDiv.appendChild(filterBtn(target.textContent));
         if (
           target.textContent === "Frontend" ||
           target.textContent === "Backend" ||
@@ -56,18 +65,24 @@ document.addEventListener("DOMContentLoaded", async function () {
           main.textContent = "";
           componentsArray(filterJobs(jobs, "", "", target.textContent), main);
         }
-        filtersDiv.appendChild(filterBtn(target.textContent));
-        const deleteBtn = document.querySelectorAll(".x-button");
-        deleteBtn.forEach((btn) => {
-          btn.addEventListener("click", removeFilter);
-        });
       }
     }
   });
+
+  function deleteEachFilter({ target }) {
+    if (target.tagName === "BUTTON") {
+      target.parentElement.remove();
+    } else if (target.tagName === "IMG") {
+      target.parentElement.parentElement.remove();
+    }
+  }
+
+  function removeGroupFilter({ target }) {
+    target.parentElement.remove();
+  }
   const getFilters = document.querySelectorAll(".filter-item");
 
   // console.log(filterJobs(jobs, "Frontend", ""));
-
   function removeFilter(e) {
     if (e.target.tagName === "BUTTON") {
       e.target.parentElement.remove();
@@ -140,11 +155,10 @@ function createHtmlComponent(data) {
 function filterBtn(text) {
   const createDiv = document.createElement("div");
   createDiv.setAttribute("class", "filter-item");
-  createDiv.innerHTML = `<div class="filter-item">
+  createDiv.innerHTML = `
   <p>${text}</p>
   <button class="x-button">
     <img src="./images/icon-remove.svg" alt="" srcset="" />
-  </button>
-</div>`;
+  </button>`;
   return createDiv;
 }
